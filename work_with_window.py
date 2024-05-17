@@ -1,9 +1,10 @@
 import pygetwindow as gw
-from repiter import main
+from repiter import start_listener
+from work_sql import name_window
 
 
 # Выводит название всех открытых вкладок
-def windooow():
+def search_windows():
     windows = gw.getAllTitles()
     for title in windows:
         print(title)
@@ -11,9 +12,10 @@ def windooow():
 
 
 # Открытие окна во весь экран, запуск кликера
-def activ_window(name):
+def activate_window(name):
     window = gw.getWindowsWithTitle(name)[0]
     window.activate()
     window.maximize()
-    main()
+    name_window(name)
+    start_listener()
     return
