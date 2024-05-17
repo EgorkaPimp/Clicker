@@ -7,9 +7,8 @@ window = tkinter.Tk()
 window.title("Clicker by Egorka")
 
 # Размер окна
-window.geometry('500x400')
-window.minsize(500, 400)
-window.maxsize(600, 500)
+window.geometry('400x600')
+
 
 
 # Функция запускает тестирование
