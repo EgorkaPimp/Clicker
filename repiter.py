@@ -51,7 +51,7 @@ def ms_click(x, y, button, pressed):
         capture_screenshot(x, y)
 
 
-def capture_screenshot(x, y, width=100, height=100):
+def capture_screenshot(x, y, width=200, height=100):
     folder_name = work_sql.n_test
     os.makedirs(folder_name, exist_ok=True)
 
@@ -67,6 +67,11 @@ def capture_screenshot(x, y, width=100, height=100):
     screenshot.save(filename)
     print(f"Screenshot saved as '{filename}'")
 
+    # Делаем скриншот всего экрана
+    screenshot_all = ImageGrab.grab()
+    filename_all = os.path.join(folder_name, f"screenshot_all_{x}_{y}.png")
+    screenshot_all.save(filename_all)
+    print(f"Screenshot saved as '{filename_all}'")
 
 # Функция записи нажатий клавиш
 def kd_click(key):
