@@ -25,8 +25,7 @@ def db_work():
 
     # Получение массива из функции
     coordinate = repiter.giv_to_db()
-    print(coordinate)
-    print("Tut masiv")
+    print(f'save array {coordinate}')
 
     # Создание таблици, если не создана
     cursor.execute("""CREATE TABLE IF NOT EXISTS baza (

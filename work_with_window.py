@@ -6,8 +6,8 @@ from work_sql import name_window
 # Выводит название всех открытых вкладок
 def search_windows():
     windows = gw.getAllTitles()
-    for title in windows:
-        print(title)
+    # for title in windows:
+    #     print(title)
     return windows
 
 

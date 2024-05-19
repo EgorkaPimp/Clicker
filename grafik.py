@@ -24,7 +24,7 @@ def search_window():
     win = work_with_window.search_windows()
     ar = []
     for i in win:
-        if len(i) > 2:
+        if len(i) > 1:
             ar.append(i)
 
     # Создаем и размещаем радиокнопки

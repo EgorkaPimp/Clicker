@@ -37,7 +37,6 @@ def giv_to_db():
 def ms_click(x, y, button, pressed):
     if pressed:
         if button == mouse.Button.left:
-            print(x, y)
             coordinates = [x, y]
             ms_clicks_array.append(coordinates)
             print(ms_clicks_array)
