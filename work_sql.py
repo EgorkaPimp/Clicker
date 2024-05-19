@@ -23,6 +23,8 @@ def db_work():
     con = sqlite3.connect('db/database.db')
     cursor = con.cursor()
 
+    scrin = repiter.names_scrin
+
     # Получение массива из функции
     coordinate = repiter.giv_to_db()
     print(f'save array {coordinate}')
@@ -32,12 +34,13 @@ def db_work():
     id INTEGER PRIMARY KEY,
     name TEXT NOT NULL,
     name_window TEXT NOT NULL,
-    array TEXT NOT NULL)""")
+    array TEXT NOT NULL,
+    name_scrin NOT NULL)""")
 
     # Добавление данных в таблицу
     cursor.execute(f""" INSERT INTO baza 
-    (name, name_window, array) 
-    VALUES ("{n_test}", "{n_window}", "{coordinate}")""")
+    (name, name_window, array, name_scrin) 
+    VALUES ("{n_test}", "{n_window}", "{coordinate}", "{scrin}")""")
 
     # Сохранение и закрытие
     con.commit()

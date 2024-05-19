@@ -1,6 +1,10 @@
 import json
+import os.path
 
 import work_sql
+
+import pyautogui
+from PIL import ImageGrab
 
 from pynput import keyboard
 from pynput import mouse
@@ -11,9 +15,12 @@ from pynput.mouse import Button
 kb = c_k()
 ms = c_m()
 
+screenshot_folder = f"D:\\py\\Clicker\\{work_sql.n_test}"
+
 # Масивы для записи координат и данных
 ms_clicks_array = []
 kb_clicks_array = []
+names_scrin = []
 
 
 # Функция воспроизведения записанных значений
@@ -36,10 +43,27 @@ def giv_to_db():
 # Функция записи нажатий мыши
 def ms_click(x, y, button, pressed):
     if pressed:
-        if button == mouse.Button.left:
-            coordinates = [x, y]
-            ms_clicks_array.append(coordinates)
-            print(ms_clicks_array)
+        coordinates = [x, y]
+        name_scrin = f"screenshot_{x}_{y}.png"
+        names_scrin.append(name_scrin)
+        ms_clicks_array.append(coordinates)
+        print(ms_clicks_array)
+        print(f"Mouse clicked at ({x}, {y})")
+        capture_screenshot(x, y)
+
+
+def capture_screenshot(x, y, width=100, height=100):
+    # Вычисляем координаты левой верхней и правой нижней точек области
+    left = x - width // 2
+    top = y - height // 2
+    right = x + width // 2
+    bottom = y + height // 2
+
+    # Делаем скриншот указанной области
+    screenshot = ImageGrab.grab(bbox=(left, top, right, bottom))
+    filename = os.path.join(screenshot_folder, f"screenshot_{x}_{y}.png")
+    screenshot.save(filename)
+    print(f"Screenshot saved as '{filename}'")
 
 
 # Функция записи нажатий клавиш
