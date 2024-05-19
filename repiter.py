@@ -15,7 +15,6 @@ from pynput.mouse import Button
 kb = c_k()
 ms = c_m()
 
-screenshot_folder = f"D:\\py\\Clicker\\{work_sql.n_test}"
 
 # Масивы для записи координат и данных
 ms_clicks_array = []
@@ -53,6 +52,9 @@ def ms_click(x, y, button, pressed):
 
 
 def capture_screenshot(x, y, width=100, height=100):
+    folder_name = work_sql.n_test
+    os.makedirs(folder_name, exist_ok=True)
+
     # Вычисляем координаты левой верхней и правой нижней точек области
     left = x - width // 2
     top = y - height // 2
@@ -61,7 +63,7 @@ def capture_screenshot(x, y, width=100, height=100):
 
     # Делаем скриншот указанной области
     screenshot = ImageGrab.grab(bbox=(left, top, right, bottom))
-    filename = os.path.join(screenshot_folder, f"screenshot_{x}_{y}.png")
+    filename = os.path.join(folder_name, f"screenshot_{x}_{y}.png")
     screenshot.save(filename)
     print(f"Screenshot saved as '{filename}'")
 
